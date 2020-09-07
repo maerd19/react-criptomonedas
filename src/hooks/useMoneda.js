@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 
-const useMoneda = () => {
+const useMoneda = (label, stateInicial, opciones) => {
   // State del custom hook
-  const [state, setState] = useState("");
+  const [state, setState] = useState(stateInicial);
 
   const Seleccionar = () => (
     <>
-      <label>Moneda</label>
-      <select>
-        <option value="MXN">Peso Mexicano</option>
+      <label>{label}</label>
+      <select onChange={(e) => setState(e.target.value)} value={state}>
+        <option value="">-- Seleccione --</option>
+        {opciones.map((opcion) => (
+          <option key={opcion.codigo} value={opcion.codigo}>
+            {opcion.nombre}
+          </option>
+        ))}
       </select>
     </>
   );
