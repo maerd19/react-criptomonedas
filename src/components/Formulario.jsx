@@ -5,6 +5,8 @@ import useMoneda from "./../hooks/useMoneda";
 import useCriptomoneda from "./../hooks/useCriptomoneda";
 import axios from "axios";
 
+import Error from "./Error";
+
 const Boton = styled.input`
   margin-top: 20px;
   font-weight: bold;
@@ -69,7 +71,7 @@ const Formulario = () => {
 
   return (
     <form onSubmit={cotizarMoneda}>
-      {error ? "Hay un error" : null}
+      {error ? <Error mensaje="Hay un error" /> : null}
       <SelectMonedas />
       <SelectCripto />
       <Boton type="submit" value="Calcular" />
