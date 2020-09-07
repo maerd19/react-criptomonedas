@@ -22,7 +22,6 @@ const Select = styled.select`
 `;
 
 const useCriptoMoneda = (label, stateInicial, opciones) => {
-  console.log(opciones);
   // State del custom hook
   const [state, setState] = useState(stateInicial);
 
@@ -31,11 +30,11 @@ const useCriptoMoneda = (label, stateInicial, opciones) => {
       <Label>{label}</Label>
       <Select onChange={(e) => setState(e.target.value)} value={state}>
         <option value="">-- Seleccione --</option>
-        {/* {opciones.map((opcion) => (
-          <option key={opcion.codigo} value={opcion.codigo}>
-            {opcion.nombre}
+        {opciones.map((opcion) => (
+          <option key={opcion.CoinInfo.Id} value={opcion.CoinInfo.Name}>
+            {opcion.CoinInfo.FullName}
           </option>
-        ))} */}
+        ))}
       </Select>
     </>
   );
