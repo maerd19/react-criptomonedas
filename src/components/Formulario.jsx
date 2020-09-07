@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 
 import useMoneda from "./../hooks/useMoneda";
@@ -25,7 +26,7 @@ const Boton = styled.input`
   }
 `;
 
-const Formulario = () => {
+const Formulario = ({ setMoneda, setCriptomoneda }) => {
   // State del listado de criptomonedas
   const [criptomonedas, setCriptomonedas] = useState([]);
   const [error, setError] = useState(false);
@@ -66,7 +67,10 @@ const Formulario = () => {
       return;
     }
     // Pasar los datos al componente principal
+
     setError(false);
+    setMoneda(moneda);
+    setCriptomoneda(criptomoneda);
   };
 
   return (
@@ -78,5 +82,10 @@ const Formulario = () => {
     </form>
   );
 };
+
+// Formulario.propTypes = {
+//   setMoneda: PropTypes.func.isRequired,
+//   setCriptomoneda: PropTypes.func.isRequired,
+// };
 
 export default Formulario;
